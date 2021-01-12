@@ -1,0 +1,30 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "tput setaf 39; go run ${file}; tput setaf 252",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "create",
+            "type": "shell",
+            "command": "code ${fileDirname}/${input:newLessonFileName}.go",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+          "id": "newLessonFileName",
+          "type": "promptString",
+          "description": "The name of the new lesson file"
+        }
+    ]
+}
