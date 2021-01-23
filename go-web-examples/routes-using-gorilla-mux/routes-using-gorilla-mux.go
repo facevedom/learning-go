@@ -58,13 +58,16 @@ func main() {
       r.HandleFunc("/books/{title}", CreateBook).Methods("POST")
       r.HandleFunc("/books/{title}", ReadBook).Methods("GET")
       r.HandleFunc("/books/{title}", UpdateBook).Methods("PUT")
-      r.HandleFunc("/books/{title}", DeleteBook).Methods("DELETE")
+	  r.HandleFunc("/books/{title}", DeleteBook).Methods("DELETE")
+	  
    -Hostnames & subdomains: Restrict the request handler to specific hostnames or
 						   subdomains.
 	  r.HandleFunc("/books/{title}", BookHandler).Host("www.mybookstore.com")
+
    -Schemes: Restrict the request handler to http/https.
 	  r.HandleFunc("/secure", SecureHandler).Schemes("https")
 	  r.HandleFunc("/insecure", InsecureHandler).Schemes("http")
+	  
    -Path prefixes & Subroutes: Restrict the request handler to specific path
 							   prefixes
 	  bookrouter := r.PathPrefix("/books").Subrouter()
