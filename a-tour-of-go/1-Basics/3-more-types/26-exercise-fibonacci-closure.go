@@ -3,10 +3,16 @@ package main
 import "fmt"
 
 // fibonacci is a function that returns a function that returns an int.
-func fibonaci() func() int {
-	fibNumber := 1
-	return func(x int) int {
-		fibNumber
+func fibonacci() func() int {
+	previousNumber := 0
+	currentNumber := 1
+
+	return func() int {
+		oldPreviousNumber := previousNumber
+		newPreviousNumber := currentNumber
+		currentNumber += previousNumber
+		previousNumber = newPreviousNumber
+		return oldPreviousNumber
 	}
 }
 
